@@ -12,6 +12,8 @@ defmodule InventoryApiWeb.Schema do
 
   mutation do
     import_fields(:create_product)
+    import_fields(:update_product)
+    import_fields(:delete_product)
   end
 
 end

@@ -20,25 +20,55 @@ defmodule InventoryApiWeb.Schema.ProductTypes do
   end
 
   object :get_product do
-    @desc "Specific product"
+    @desc """
+    Get specific product
+    """
 
     field :product, :product do
       arg(:id, non_null(:id))
 
-      #resolve(&Resolvers.Products.get_product/2)
+      resolve(&Resolvers.Products.get_product/2)
     end
   end
 
   object :create_product do
     @desc "Create a product"
 
-    @desc "Create a product"
+    @desc """
+    Create a product
+    """
     field :create_product, :product do
       arg :reference, non_null(:string)
       arg :sku, non_null(:string)
       arg :price, non_null(:float)
 
-      #resolve(&Resolvers.Products.create_product/2)
+      resolve(&Resolvers.Products.create_product/2)
+    end
+  end
+
+  object :update_product do
+    @desc """
+    Update a product
+    """
+
+    @desc "Update a product"
+    field :update_product, :product do
+      arg(:id, non_null(:id))
+      arg(:name, :string)
+
+      resolve(&Resolvers.Products.update_product/2)
+    end
+  end
+
+  object :delete_product do
+    @desc """
+    Delete a specific product
+    """
+
+    field :delete_product, :product do
+      arg(:id, non_null(:id))
+
+      resolve(&Resolvers.Products.delete_product/2)
     end
   end
 
