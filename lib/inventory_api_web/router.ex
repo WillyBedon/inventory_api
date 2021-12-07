@@ -33,6 +33,7 @@ defmodule InventoryApiWeb.Router do
   # Note that preview only shows emails that were sent by the same
   # node running the Phoenix server.
   if Mix.env() == :dev do
+    forward "/graphiql", Absinthe.Plug.GraphiQL, schema: InventoryApiWeb.Schema
     scope "/dev" do
       pipe_through [:fetch_session, :protect_from_forgery]
 
